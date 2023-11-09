@@ -1,0 +1,68 @@
+{{ define "main" }}
+  {{- partial "post.html" . -}}
+ 
+  {{- $ctx := . -}}
+  <section class="section post-box-section">
+    <div class="container">
+      <div class="columns">
+        <div class="column is-10 is-offset-1">
+          <div class="columns">
+            <div class="column is-8">
+              <div class="post-lists">
+                {{ range where .Site.RegularPages "Section" "article"}}
+                <div class="box post-box">
+                  {{ with .Params.Tags }}
+                  <div class="post-box-tags">
+                    {{ range .}}
+                    <span class="post-tag post-box-tag">
+                      #{{ . }}
+                    </span>
+                    {{ end }}
+                  </div>
+                  {{ end }}
+                  <div class="post-box-title">
+                    <a href="{{ .Permalink }}" class="title is-size-3">{{ .Title }}</a>
+                  </div>
+                  <div class="post-box-meta">
+                      <p class="title is-size-4">{{ .Params.subtitle }}</p>
+                      <p class="title is-size-5">{{ with .Params.author }}{{ range $i, $e := . }}{{ if $i }}, {{ end }}{{ .given_name }} {{ .surname }}{{ end }}{{ end }} |
+                    {{ with .Params._date }}
+                      {{ .month }} {{ .day }}, {{ .year }}
+                    {{ end }}</p>
+                      <p>{{ .Params.abstract }}</p>
+                      <a href="{{ .Permalink }}" class="button is-black">Read</a>
+                  </div>
+                </div>
+                {{ end }}
+              </div>
+            </div>
+            <div class="column is-4 is-hidden-mobile">
+              <div class="card">
+                <div class="card-content">
+                  <div class="content">
+                    <div class="container" style="margin-bottom: 0.5rem">
+                      <dl>
+                          <dt>Journal</dt>
+                          <dd>{{ .Site.Title }}</dd>
+                          <dt>ISSN</dt>
+                          <dd>{{ .Site.Params.issn }}</dd>
+                          <dt>Publisher</dt>
+                          <dd>{{ .Site.Params.publisher }}</dd>
+                          <dt>License</dt>
+                          <dd><a href="{{ .Site.Params.license_uri }}">{{ .Site.Params.license }}</a></dd>
+                          <dt>Description</dt>
+                          <dd>{{ .Site.Params.description }}</dd>
+                        </dl>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <br>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+{{ end }}

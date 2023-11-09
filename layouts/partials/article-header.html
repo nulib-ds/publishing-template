@@ -1,0 +1,12 @@
+<section class="hero is-primary shadow-hero {{ if .Site.Params.heroBold }} is-bold {{ end }}">
+    <div class="hero-head">
+      {{ partial "nav.html" . }}
+    </div>
+    <div class="hero-body">
+      <header class="container has-text-centered">
+        <p class="title post-title">
+          {{ .Params.article.heading}}
+        </p>
+      </header>
+    </div>
+  </section>

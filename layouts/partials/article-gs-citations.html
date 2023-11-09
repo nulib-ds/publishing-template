@@ -1,0 +1,2 @@
+<!-- Cited references for Google Scholar --> {{ range .Params.references }}
+  <meta name="citation_reference" content="citation_title={{ .title }};{{ range .author }}citation_author={{ .family }}, {{ .given }};{{ end }}citation_publication_date={{ .issued }};{{ if .doi }}citation_doi={{ .doi }}{{ end }};{{ if .url }}citation_url={{ .url }}{{ end }};{{ if .container_title }}citation_journal={{ .container_title }};citation_volume={{ .volume }};citation_number={{ .issue}};{{ end }}" />{{ end }}

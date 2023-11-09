@@ -1,0 +1,37 @@
+<footer class="footer">
+  <div class="container is-primary">
+    <div class="columns">
+      <div class="column is-two-thirds">
+        <a href="{{ .Site.BaseURL }}">
+          <figure class="image is-3by2 mb-2">
+            <img src="{{ .Site.Params.lockup }}" width="300" title="Journal Home" alt="Journal Logo">
+          </figure>          
+        </a>
+        <p class="mb-2">Published by <a href="">Northwestern University Libraries</a> <br> <span class="has-text-weight-bold">ISSN: {{ .Site.Params.issn }}</span>.</p>
+      </div>
+      <div class="column">
+        <div class="columns">
+          <div class="column">
+            <ul>
+              <li><a href="">About the Journal</a></li>
+              <li><a href="">People</a></li>
+              <li><a href="">Programs</a></li>
+              <li><a href="">Publications</a></li>
+            </ul>
+          </div>
+          <div class="column">
+            <ul>
+              <li><a href="">Events</a></li>
+              <li><a href="">Shop</a></li>
+              <li><a href="">Contact</a></li>
+              <li><a href="">Get Involved</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+{{ if .Site.Params.pwa }}
+{{ partial "pwa.html" . }}
+{{ end }}

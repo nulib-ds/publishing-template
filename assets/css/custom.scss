@@ -1,0 +1,85 @@
+html {
+    font-size: 16px;
+}
+
+body {
+    line-height: 1.8;
+}
+
+.p2 {
+    padding-left: 40px;
+    text-indent: -40px;
+    line-height: 2.5; 
+}
+
+#current-issue .card {
+    background-color: #AD40FF;
+    color: #000;
+}
+
+#current-issue .card h4 > a {
+    color: #fff;
+    font-weight: bold;
+}
+
+#current-issue .card a {
+    color: #000;
+}
+
+#current-issue .card a:hover {
+    text-decoration: underline;
+}
+
+#current-issue .card #heading {
+    color: #000;
+    font-weight: bold;
+}
+
+#article-metadata {
+    background-color: #AD40FF;
+    color: #000;
+}
+
+#article-metadata dd, dl {
+    margin-bottom: 0;
+    font-size: 1rem;
+}
+
+#article-metadata dt {
+    margin-top: 1em;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+/*
+#article-metadata a {
+    color: #fff;
+}
+*/
+#article-metadata a:hover {
+    text-decoration: underline;
+}
+
+#article-metadata > #downloads a {
+    color: #000;
+}
+
+.footer {
+    background: #000;
+    color: #fff;
+}
+
+.footer a {
+    color: #fff;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
+.navbar a:hover {
+    text-decoration: underline;
+}
+
+table {
+    font-size: smaller;
+}

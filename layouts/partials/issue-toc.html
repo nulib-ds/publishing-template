@@ -1,0 +1,61 @@
+<section>
+    <div class="container" id="current-issue">
+        <h3 class="is-size-3 m-3 is-uppercase has-text-weight-bold">{{ .Params.Title }}</h3> 
+        <hr>
+        <div class="columns">
+            <div class="column is-one-third">
+                <div class="box">
+                    {{ with .Params.issue}}
+                    <figure>
+                        <a href="{{ .cover }}" title="Zoom in on cover image">
+                            <img src="{{ .cover }}" alt="Cover of Current Issue"/>
+                        </a>
+                    </figure>
+                    <p class="is-size-4">Volume {{ .volume }}, Issue {{ .issue }}
+                    </p>
+                    <p class="is-size-5">{{ .pubdate }}</p>{{ end }}
+                    <p class="is-size-5">ISSN {{ .Site.Params.issn }}</p>
+                    <a href="{{ .Params.issue.pdf }}" target="_blank" class="button has-text-weight-bold">Download PDF</a>
+                </div>
+            </div>
+            <div class="column">
+                <!-- This odd looking loop ranges through regular  pages that have a section of "article", then looks for the volume equal to the current page, then looks for the current issue. It is fairly nested which I don't love, but it's logical. I could rewrite it with a nested with statement or if statement--> 
+                {{ range where (where .Site.RegularPages "Params.article.volume" .Params.issue.volume) "Params.article.issue" .Params.issue.issue }}
+                <article class="card mb-3">
+                    <header class="card-header">
+                        <h4 class="card-header-title is-size-4">
+                            <a href="{{ .Permalink | relURL }}">
+                                {{ .Title }}{{ if .Params.subtitle}}: {{ .Params.subtitle}}{{ end }}
+                            </a>
+                        </h4>
+                    </header>
+                    <div class="card-content">
+                        <div class="content">
+                            {{ with .Params.author }}
+                            <p class="has-text-weight-bold mb-2 is-size-5">
+                            {{ range $i, $e := . }}
+                            {{ if $i }}, {{ end }}
+                            {{ .name }}
+                            {{ end }}
+                            </p>
+                            {{ end }}
+                            <p>{{ .Params.abstract | markdownify }}</p>
+                            <p class="is-size-6 is-uppercase" id="heading">
+                            {{ .Params.article.heading }}
+                            </p>
+                        </div>
+                    </div>
+                    <footer class="card-footer">
+                        <a href="{{ .Permalink | relURL }}" class="card-footer-item">READ</a>{{ with .Resources.GetMatch "*.pdf" }}
+                        <a href="{{ .Permalink}}" class="card-footer-item">PDF</a>{{ end }}{{ with .Resources.GetMatch "*.xml" }}
+                        <a href="{{ .Permalink}}" class="card-footer-item">XML</a>{{ end }}
+                    </footer>
+                </article>
+                {{ end }}
+            </div>
+        </div>
+    </div>
+
+</section>
+
+

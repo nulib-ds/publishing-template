@@ -1,0 +1,16 @@
+<!DOCTYPE html> 
+<html {{if .Site.LanguageCode}}lang="{{.Site.LanguageCode}}"{{end}}>
+{{- partial "head.html" . -}}
+
+<body>
+  <a class="skip-link" href="#maincontent">Skip to main</a>
+  <div id="main">
+    {{- block "main" . }}{{- end }}
+  </div>
+  {{- partial "footer.html" . -}}
+  {{- partial "backtotop.html" . -}}
+  {{- partial "navburger.html" . -}}
+  {{- block "script" . }}{{- end }}
+</body>
+
+</html>

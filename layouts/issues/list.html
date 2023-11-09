@@ -1,0 +1,14 @@
+{{ define "main" }}
+{{ partial "header.html" . }}
+<section id = "current-issue" class = "container content">
+    <h2 class="is-size-3 m-3 is-uppercase has-text-weight-bold">Issue Archive</h3>
+    {{ range (where .Site.RegularPages "Section" "issues").ByDate.Reverse }}
+    <ul>
+        <li class="is-size-4"><a href="{{ .Permalink | relURL }}">
+                {{ .Title }} {{.Params.issue.pubdate}}
+            </a> (<a href="{{ .Params.issue.pdf}}">download PDF</a>)
+        </li>
+    </ul>
+    {{end}}
+</section>
+{{end}}

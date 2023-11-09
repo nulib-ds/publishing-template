@@ -1,0 +1,34 @@
+  <!-- open graph tags-->
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="{{ .Permalink }}"/>
+  <meta property="og:title" content="{{ .Title }}{{ with .Params.subtitle }}: {{ . }}{{ end }}"/>
+  <meta property="og:description" content="{{ .Params.abstract }}"/>
+  <meta property="og:image" content="{{ .Site.BaseURL }}/{{ .Site.Params.favicon }}" />
+  
+  <!-- twitter card tags -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="{{ .Site.Params.twitter_username }}"/>
+  <meta name="twitter:title" content="{{ .Title }}{{ with .Params.subtitle }}: {{ . }}{{ end }}" />
+  <meta property="twitter:description" content="{{ .Params.abstract }}" />
+  <meta property="twitter:image" content="{{ .Site.BaseURL }}//{{ .Site.Params.favicon }}" />
+
+  <!-- google scholar tags -->
+  <meta name="citation_title" content="{{ .Title }}{{ with .Params.subtitle }}: {{ . }}{{ end }}">{{ range .Params.author }}
+  <meta name="citation_author" content="{{ .surname }}, {{ .given_name }}">
+  <meta name="citation_author_institution" content="{{ .affiliation }}"/>{{ end }}
+  <meta name="citation_publication_date" content="{{ .Params._date.year }}/{{ .Params._date.month }}/{{ .Params._date.day }}">
+  <meta name="citation_journal_title" content="{{ .Site.Title }}">
+  <meta name="citation_journal_abbrev" content="{{ .Site.Params.abbrev }}"/>
+  <meta name="citation_issn" content="{{ .Site.Params.issn }}"/>
+  <meta name="citation_volume" content="{{ .Params.article.volume }}">
+  <meta name="citation_issue" content="{{ .Params.article.issue }}">
+  <meta name="citation_firstpage" content="{{ .Params.article.fpage }}">
+  <meta name="citation_lastpage" content="{{ .Params.article.lpage }}">
+  <meta name="citation_doi" content="{{ .Params.article.doi }}"/>
+  <meta name="citation_date" content="{{ .Params._date.month }} {{ .Params._date.day }}, {{ .Params._date.year }}"/>{{ with .Resources.GetMatch "*.pdf" }}
+  <meta name="citation_pdf_url" content="{{ .Name }}">{{ end }}
+  <meta name="citation_abstract" content="{{ .Params.abstract }}" />
+  <meta name="citation_publisher" content="{{ .Site.Params.publisher }}"/>
+  <meta name="citation_article_type" content="{{ .Params.article.heading }}">
+  <meta name="dc.identifier" content="{{ .Params.article.doi }}" />
+  {{ partial "article-gs-citations.html" . }}

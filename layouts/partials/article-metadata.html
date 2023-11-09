@@ -1,0 +1,58 @@
+<div class="box" id="article-metadata">
+    <h1 class="is-size-3 has-text-white">{{ .Title }}</h1>
+    {{ if .Params.subtitle }}
+    <p class="is-size-4 has-text-weight-bold has-text-white">{{ .Params.subtitle }}</p>
+    {{ end }}
+    {{ with .Params.author }}
+    <p class="has-text-weight-bold mb-2 is-size-5">
+        {{ range $i, $e := . }}
+        {{ if $i }}, {{ end }}
+        {{ .name }}
+        {{ end }}
+    </p>
+    {{ end }}
+    <p>{{ .Params.abstract | markdownify }}</p>
+
+    <dl>
+        <dt>
+            Volume (Issue)
+        </dt>
+        <dd>
+            {{ .Params.article.volume }}({{ .Params.article.issue }})
+        </dd>
+        <dt>
+            Published
+        </dt>
+        <dd>
+            {{ .Params._date.month }} {{ .Params._date.day }}, {{ .Params._date.year }}
+        </dd>
+        <dt>
+            DOI
+        </dt>
+        <dd>
+            <a href="https://doi.org/{{ .Params.article.doi }}">
+                {{ .Params.article.doi }}
+            </a>
+        </dd>
+        <dt>
+            Copyright
+        </dt>
+        <dd>
+            &copy; {{ .Params._date.year }}. The Authors. This is an open access article distributed under the terms of the <a href="{{ .Site.Params.license_uri }}">
+                {{ .Site.Params.license }}
+            </a>
+        </dd>
+        <dt>
+            Preferred Citation
+        </dd>
+        <dd>
+            {{ partial "article-citation.html" . }}
+        </dd>
+    </dl>
+    <div class="mt-3" id="downloads">
+        {{ with .Resources.GetMatch "*.pdf" }}
+        <a href="{{ .Name }}" class="button is-responsive">PDF</a>{{ end }}
+        {{ with .Resources.GetMatch "*.xml" }}
+        <a href="{{ .Name }}" class="button is-responsive">XML</a>{{ end }}
+    </div>  
+</div>
