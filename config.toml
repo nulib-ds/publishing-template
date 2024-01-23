@@ -1,4 +1,4 @@
-baseURL = "https://bulletin.appliedtransstudies.org"
+baseURL = ""
 languageCode = "en-US"
 DefaultContentLanguage = "en"
 title = "NU Libraries Publishing Template"
@@ -16,7 +16,7 @@ googleAnalytics = ""
   publisher = "Northwestern University Libraries"
 
   # change bulma's primary color
-  primaryColor = "#000"
+  primaryColor = "#5555"
 
   # subtitle on homepage
   subtitle = "A publication by NULIB"
