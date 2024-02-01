@@ -1,5 +1,15 @@
 # publishing-template
 
-This repository the code for the Bulletin of Applied Transgender Studies website configured to be used as a template for other journals. It will allow us to spin up new journals in a matter of minutes. 
+This is a template for a static site-generated academic journal/magazines using Hugo.
 
-Documentation for the template is in progress, but the template is ready to use.
+## Quick Start
+
+1. Click "use this template" in GitHub (or clone it and rename the  `publishing-template` directory.
+2. Edit the `config.toml` file in the root directory of your project to your liking.
+3. Publish using GitHub pages.
+
+## Feature Request/Bug Report Etc.
+
+Please first make sure that someone else has not already created an issue, then feel free to publish.
+
+Better documentation is in the works.
